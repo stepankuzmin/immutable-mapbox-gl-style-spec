@@ -1,0 +1,17 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "plugin:flowtype/recommended"],
+  "plugins": [
+    "flowtype",
+    "import"
+  ],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "rules": {
+    "comma-dangle": ["error", "never"],
+    "no-return-assign": 0,
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "peerDependencies": true}]
+  }
+}

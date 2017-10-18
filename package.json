@@ -2,10 +2,46 @@
   "name": "immutable-mapbox-gl-style-spec",
   "version": "1.0.0",
   "description": "",
+  "author": "Stepan Kuzmin <to.stepan.kuzmin@gmail.com> (stepankuzmin.ru)",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint src test",
+    "typecheck": "flow check src",
+    "test": "jest",
+    "build": "webpack -p --config webpack.config.js",
+    "commit": "npm run build && git-cz",
+    "release": "standard-version"
   },
-  "author": "",
-  "license": "ISC"
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-eslint": "8.0.1",
+    "babel-jest": "21.2.0",
+    "babel-loader": "7.1.2",
+    "babel-preset-env": "1.6.0",
+    "babel-preset-flow": "6.23.0",
+    "commitizen": "2.9.6",
+    "cz-conventional-changelog": "2.0.0",
+    "documentation": "5.3.3",
+    "enzyme": "3.1.0",
+    "enzyme-adapter-react-16": "1.0.2",
+    "eslint": "4.9.0",
+    "eslint-config-airbnb": "16.1.0",
+    "eslint-plugin-flowtype": "2.39.1",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-jsx-a11y": "6.0.2",
+    "eslint-plugin-react": "7.4.0",
+    "flow-bin": "0.57.3",
+    "gh-pages": "1.0.0",
+    "immutable": "4.0.0-rc.8",
+    "jest": "21.2.1",
+    "mapbox-gl": "0.41.0",
+    "standard-version": "4.2.0",
+    "webpack": "3.8.0"
+  }
 }
