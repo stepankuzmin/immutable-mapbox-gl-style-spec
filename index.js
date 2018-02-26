@@ -7,8 +7,7 @@ import styleSpec from 'mapbox-gl/src/style-spec/reference/latest';
 
 export const getDefaults = (object: Object) =>
   Object.keys(object).reduce(
-    (acc, key: string) =>
-      Object.assign({}, acc, { [key]: object[key].default }),
+    (acc, key: string) => Object.assign({}, acc, { [key]: object[key].default }),
     {}
   );
 
@@ -17,17 +16,18 @@ const LayerShape = Object.keys(styleSpec.layer).reduce(
   {}
 );
 
-export const LayerDefaultsByType = Object.keys(
-  styleSpec.layer.type.values
-).reduce((acc, type: string) => {
-  const layer = Object.assign({}, LayerShape);
+export const LayerDefaultsByType = Object.keys(styleSpec.layer.type.values).reduce(
+  (acc, type: string) => {
+    const layer = Object.assign({}, LayerShape);
 
-  layer.layout = getDefaults(styleSpec[`layout_${type}`]);
-  layer.paint = getDefaults(styleSpec[`paint_${type}`]);
+    layer.layout = getDefaults(styleSpec[`layout_${type}`]);
+    layer.paint = getDefaults(styleSpec[`paint_${type}`]);
 
-  acc[type] = layer;
-  return acc;
-}, {});
+    acc[type] = layer;
+    return acc;
+  },
+  {}
+);
 
 const {
   background,
@@ -40,39 +40,25 @@ const {
 } = LayerDefaultsByType;
 
 export type BackgroundLayer = RecordOf<BackgroundLayerSpecification>;
-export const makeBackgroundLayer: RecordFactory<
-  BackgroundLayerSpecification
-> = Record(background);
+export const makeBackgroundLayer: RecordFactory<BackgroundLayerSpecification> = Record(background);
 
 export type CircleLayer = RecordOf<CircleLayerSpecification>;
-export const makeCircleLayer: RecordFactory<CircleLayerSpecification> = Record(
-  circle
-);
+export const makeCircleLayer: RecordFactory<CircleLayerSpecification> = Record(circle);
 
 export type FillLayer = RecordOf<FillLayerSpecification>;
-export const makeFillLayer: RecordFactory<FillLayerSpecification> = Record(
-  fill
-);
+export const makeFillLayer: RecordFactory<FillLayerSpecification> = Record(fill);
 
 export type FillExtrusionLayer = RecordOf<FillExtrusionLayerSpecification>;
-export const makeFillExtrusionLayer: RecordFactory<
-  FillExtrusionLayerSpecification
-> = Record(fillExtrusion);
+export const makeFillExtrusionLayer: RecordFactory<FillExtrusionLayerSpecification> = Record(fillExtrusion);
 
 export type LineLayer = RecordOf<LineLayerSpecification>;
-export const makeLineLayer: RecordFactory<LineLayerSpecification> = Record(
-  line
-);
+export const makeLineLayer: RecordFactory<LineLayerSpecification> = Record(line);
 
 export type RasterLayer = RecordOf<RasterLayerSpecification>;
-export const makeRasterLayer: RecordFactory<RasterLayerSpecification> = Record(
-  raster
-);
+export const makeRasterLayer: RecordFactory<RasterLayerSpecification> = Record(raster);
 
 export type SymbolLayer = RecordOf<SymbolLayerSpecification>;
-export const makeSymbolLayer: RecordFactory<SymbolLayerSpecification> = Record(
-  symbol
-);
+export const makeSymbolLayer: RecordFactory<SymbolLayerSpecification> = Record(symbol);
 
 export type Layer =
   | FillLayer
@@ -135,6 +121,4 @@ export const StyleDefaults = {
 };
 
 export type Style = RecordOf<StyleSpecification>;
-export const makeStyle: RecordFactory<StyleSpecification> = Record(
-  StyleDefaults
-);
+export const makeStyle: RecordFactory<StyleSpecification> = Record(StyleDefaults);
